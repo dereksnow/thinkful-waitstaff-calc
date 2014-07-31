@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css" media="all">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="myApp.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-controller="FormCtrl">
+        <header>
+            <h1>Waitstaff Calculator</h1> 
+        </header>
+        <form ng-submit="submitted=true; submit()" name="myForm" novalidate>
+            <div class="details">
+                <div class="title">
+                    <h1>Enter the Meal Details</h1> 
+                </div>
+                <label for="base-price">Base Meal Price: $</label>
+                <input type="number" id="base-price" name="basePrice" ng-model="basePrice" required>
+                <label for="tax-rate">Tax Rate: %</label>
+                <input type="number" id="tax-rate" name="taxRate" ng-model="taxRate" required>
+                <label for="tip-percent">Tip Percentage: %</label>
+                <input type="number" id="tip-percent" name="tipPercent" ng-model="tipPercent" required>
+                <div class="button-group">
+                    <input type="submit" value="submit">
+                    <input type="button" value="cancel">
+                </div>
+            </div>
+        </form>
+        <div class="charges">
+            <div class="title">
+                <h1>Customer Charges</h1> 
+            </div>
+            <p>Subtotal {{data.subtotal | currency:"$"}}</p>
+	    <p>Tip {{data.tip | currency:"$"}}</p>
+	    <p>Total {{data.total | currency:"$"}}</p>
+        </div>
+        <div class="info">
+            <div class="title">
+                <h1>My Earnings Info</h1>
+            </div>
+            <p>Tip Total: {{data.tipTotal | currency:"$"}}</p>
+            <p>Meal count: {{data.mealCount}}</p>
+            <p>Average Tip Per Meal: {{data.avgTipPerMeal | currency:"$"}}
+        </div>
+    </div>
+</body>
+
+</html>
