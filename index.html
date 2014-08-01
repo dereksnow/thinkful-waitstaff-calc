@@ -20,33 +20,35 @@
                     <h1>Enter the Meal Details</h1> 
                 </div>
                 <label for="base-price">Base Meal Price: $</label>
-                <input type="number" id="base-price" name="basePrice" ng-model="basePrice" required>
+                <input type="number" min="0" id="base-price" name="basePrice" ng-model="basePrice" ng-class="{'required-num' : myForm.basePrice.$invalid && submitted}" required>
                 <label for="tax-rate">Tax Rate: %</label>
-                <input type="number" id="tax-rate" name="taxRate" ng-model="taxRate" required>
-                <label for="tip-percent">Tip Percentage: %</label>
-                <input type="number" id="tip-percent" name="tipPercent" ng-model="tipPercent" required>
+                <input type="number" min="0 " max="100 " id="tax-rate " name="taxRate" ng-model="taxRate" ng-class="{'required-percent'
+		: myForm.taxRate.$invalid && submitted}" required>
+                <label for="tip-percent ">Tip Percentage: %</label>
+                <input type="number" min="0 " max="100 " id="tip-percent" name="tipPercent" ng-model="tipPercent" ng-class="{'required-percent' : myForm.tipPercent.$invalid && submitted}" required>
                 <div class="button-group">
                     <input type="submit" value="submit">
-                    <input type="button" value="cancel">
+                    <input type="button" ng-click="cancel()" value="Cancel">
                 </div>
             </div>
         </form>
-        <div class="charges">
-            <div class="title">
+        <div class="charges ">
+            <div class="title ">
                 <h1>Customer Charges</h1> 
             </div>
-            <p>Subtotal {{data.subtotal | currency:"$"}}</p>
-	    <p>Tip {{data.tip | currency:"$"}}</p>
-	    <p>Total {{data.total | currency:"$"}}</p>
+            <p>Subtotal {{data.subtotal | currency:"$ "}}</p>
+            <p>Tip {{data.tip | currency:"$ "}}</p>
+            <p>Total {{data.total | currency:"$ "}}</p>
         </div>
-        <div class="info">
-            <div class="title">
+        <div class="info ">
+            <div class="title ">
                 <h1>My Earnings Info</h1>
             </div>
-            <p>Tip Total: {{data.tipTotal | currency:"$"}}</p>
+            <p>Tip Total: {{data.tipTotal | currency:"$ "}}</p>
             <p>Meal count: {{data.mealCount}}</p>
-            <p>Average Tip Per Meal: {{data.avgTipPerMeal | currency:"$"}}
+            <p>Average Tip Per Meal: {{data.avgTipPerMeal | currency:"$ "}}
         </div>
+	<div class="reset"><input type="button" ng-click="reset()" value="Reset"></div>
     </div>
 </body>
 
